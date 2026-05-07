@@ -25,10 +25,5 @@ class Service:
     def create_endpoint(self, endpoint: Dict) -> Endpoint:
         return Endpoint(self.config.get_api_base_url(), endpoint)
     
-    def request_data(self, endpoint_name: str, id: str | int): Dict
-        url = self.endpoints[endpoint_name].format_url(id)
-        return json.loads(self.send_request(Request(url)))
-
-    def send_request(self, req: Request) -> bytes:
-        response = urlopen(req)
-        return response.read()
+    def request_endpoint(self, endpoint_name: str, id: str | int): Dict
+        return self.endpoints[endpoint_name].get_data(id)
