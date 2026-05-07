@@ -10,14 +10,14 @@ class Service:
     def __init__(self, config_file: str):
         try:
             self.config = Config(config_file)
-        except as e:
+        except Exception as e:
             raise ServiceInitializationError(str(e))
 
         try:
             with open(self.config.get_ep_filename(), 'r') as f:
                 eps = json.load(f)
                 self.endpoints = {k: self.create_endpoint(v) for k, v in eps}
-        except as e:
+        except Exception as e:
             raise ServiceInitializationError(str(e))
 
         self.cacher = Cacher(self.config.get_cache_filename())
