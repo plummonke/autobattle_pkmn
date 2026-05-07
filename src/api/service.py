@@ -22,7 +22,7 @@ class Service:
 
         self.cacher = Cacher(self.config.get_cache_filename())
 
-    def create_endpoint(self, endpoint: Dict) -> Endpoint:
+    def create_endpoint(self, endpoint: Dict):
         return Endpoint(self.config.get_api_base_url(), endpoint)
     
     def request_endpoint(self, endpoint_name: str, id: str | int) -> Dict:
