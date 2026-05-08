@@ -16,6 +16,6 @@ class Cacher:
 
     def write_to_file(self, data: Dict):
         with open(self.filename, 'wr') as f:
-            file = json.load(f)
-            file.update(Dict)
+            data = json.load(f)
+            data.update(Dict)
             json.dump(file, f)
